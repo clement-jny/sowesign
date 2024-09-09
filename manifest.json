@@ -1,0 +1,16 @@
+{
+	"manifest_version": 3,
+	"name": "Canvas Signature Script",
+	"version": "1.0",
+	"description": "Exécute un script JavaScript pour dessiner une signature sur un canvas.",
+	"permissions": ["scripting", "activeTab"],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_scripts": [
+		{
+			"matches": ["*://app.sowesign.com/*", "*://*/*"],
+			"js": ["content.js"]
+		}
+	]
+}
