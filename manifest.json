@@ -1,16 +1,25 @@
 {
 	"manifest_version": 3,
-	"name": "Canvas Signature Script",
+	"name": "SWS Signature - Enigma",
+	"description": "Permet de signer automatiquement les signatures Enigma.",
 	"version": "1.0",
-	"description": "Exécute un script JavaScript pour dessiner une signature sur un canvas.",
+
 	"permissions": ["scripting", "activeTab"],
-	"background": {
-		"service_worker": "background.js"
+	"host_permissions": ["*://app.sowesign.com/*"],
+
+	"action": {
+		"default_popup": "./popup/popup.html"
 	},
+
+	"background": {
+		"service_worker": "./background.js",
+		"type": "module"
+	},
+
 	"content_scripts": [
 		{
-			"matches": ["*://app.sowesign.com/*", "*://*/*"],
-			"js": ["content.js"]
+			"js": ["./scripts/content.js"],
+			"matches": ["https://app.sowesign.com/*", "*://*/*"]
 		}
 	]
 }
